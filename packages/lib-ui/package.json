@@ -6,6 +6,7 @@
   "devDependencies": {
     "vitest": "^0.28.5"
   },
+  "files": ["dist"],
   "exports": {
     ".": "./dist/index.js",
     "./*": "./dist/*.js"

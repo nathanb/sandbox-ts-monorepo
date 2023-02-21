@@ -8,6 +8,7 @@
     ".": "./dist/index.mjs",
     "./*": "./dist/*.mjs"
   },
+  "files": ["dist"],
   "devDependencies": {
     "@types/node": "^18.14.0",
     "vitest": "^0.28.5"
