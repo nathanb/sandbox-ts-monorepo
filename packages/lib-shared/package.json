@@ -8,7 +8,9 @@
     ".": "./dist/index.mjs",
     "./*": "./dist/*.mjs"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/node": "^18.14.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

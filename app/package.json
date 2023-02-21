@@ -4,8 +4,14 @@
   "description": "",
   "main": "./dist/index.mjs",
   "type": "module",
-  "devDependencies": {},
+  "bin": {
+    "app": "./dist/index.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^18.14.0"
+  },
   "scripts": {
+    "start": "node .",
     "build": "tsc --build"
   },
   "author": "",

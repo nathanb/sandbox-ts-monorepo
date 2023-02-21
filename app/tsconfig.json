@@ -102,7 +102,7 @@
   },
   "include": ["src/**/*"],
   "references": [
-    { "path": "../lib-main/tsconfig.json" },
-    { "path": "../lib-shared/tsconfig.json" }
+    { "path": "../packages/lib-main" },
+    { "path": "../packages/lib-shared" }
   ]
 }

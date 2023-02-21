@@ -8,15 +8,16 @@
   },
   "devDependencies": {},
   "scripts": {
+    "start": "npm run start -w app",
+    "prebuild": "tsc --build --clean",
     "build": "tsc --build",
-    "watch": "tsc --build --watch",
-    "clean": "tsc --build --clean"
+    "watch": "tsc --build --watch"
   },
   "author": "",
   "license": "ISC",
   "workspaces": [
     "app",
-    "lib-main",
-    "lib-shared"
+    "packages/lib-main",
+    "packages/lib-shared"
   ]
 }
