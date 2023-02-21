@@ -1,0 +1,22 @@
+{
+  "name": "ts-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "dependencies": {
+    "typescript": "^4.9.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "tsc --build",
+    "watch": "tsc --build --watch",
+    "clean": "tsc --build --clean"
+  },
+  "author": "",
+  "license": "ISC",
+  "workspaces": [
+    "app",
+    "lib-main",
+    "lib-shared"
+  ]
+}

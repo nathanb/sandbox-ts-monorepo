@@ -1,0 +1,13 @@
+{
+  "name": "@ts-test/app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.mjs",
+  "type": "module",
+  "devDependencies": {},
+  "scripts": {
+    "build": "tsc --build"
+  },
+  "author": "",
+  "license": "ISC"
+}
