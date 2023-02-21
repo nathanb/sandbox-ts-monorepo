@@ -8,7 +8,8 @@
     "app": "./dist/index.mjs"
   },
   "devDependencies": {
-    "@types/node": "^18.14.0"
+    "@types/node": "^18.14.0",
+    "vitest": "^0.28.5"
   },
   "scripts": {
     "start": "node .",

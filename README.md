@@ -6,13 +6,14 @@ npm i
 ```
 
 ## Watch mode
-Edit and save any `*.mts` file
+Edit and save any source file. This runs both `tsc --build --watch` and webpack dev server in parallel. Browse to: http://localhost:3000
+
 ```bash
-npm run watch # tsc --build --watch
+npm run watch
 ```
-## Clean build
+## Build
 ```bash
-npm run build # tsc --build --clean
+npm run build
 ```
 
 ## Run/test
@@ -34,17 +35,23 @@ multiplyRef 2*3: 6
 We're combining both Typescript's build system with npm workspaces to simplify monorepo configuration.
 
 ## NPM Workspaces
-With this monorepo using npm workspaces, each workspace will automatically link under `node_modules/{package_name}` making it available to any module in the repository. So by example, the package/workspace `packages/lib-main` named `@ts-test/lib-main` in its `package.json` will be available to any other project that requires it. Organizationally, the entry-point app `./app` lives in the root of the repository, and the dependencies are organized under `./packages`. This is purely by preference.
+With this monorepo using npm workspaces, each workspace will automatically link under `node_modules/{package_name}` making it available to any module in the repository. So by example, the package/workspace `packages/lib-main` named `@ts-test/lib-main` in its `package.json` will be available to any other project that requires it. Organizationally, the entry-point app `./app` and `./web` live in the root of the repository, and the dependencies are organized under `./packages`. This is purely by preference.
+
+
+## Web projects
+I've intentionally avoided CRA in this scenario for flexibility. Also, to keep things simple, I've elected not to use ESM for the web and UI packages. So `web` and `packages/lib-ui` both are `CommonJS` packages with `module: ESNext`. `tsc` will build the `lib-ui` project itself, but `web` has `emit: false` since it relies on `babel-typescript` and webpack. `lib-shared` has been switched to CommonJS as well for simplicity. The major benefit here (as a monorepo and tsc watch) is the ability to have a separate React component package that automatically refreshes upon save in the web app. This is typically a challenge due to conflicting react and react-dom instances. But here, npm workspaces solves that for us with auto-linking and package sharing.
 
 ## Node ESM
-All of these projects are currently Node ESM configured with `package.json` `type: 'module'` and `exports: {...}`. The exports define root and subpaths to resolve modules within each project. This is where the extension mapping happens and the resolution of `/*` (import path) => `/dist/*` (actual file system path). 
+~~All~~ Some of these projects are currently Node ESM configured with `package.json` `type: 'module'` and `exports: {...}`. The exports define root and subpaths to resolve modules within each project. This is where the extension mapping happens and the resolution of `/*` (import path) => `/dist/*` (actual file system path). 
+
+While webpack -> babel-typescript builds commonJS code referencing ESM dependencies just fine, it throws kinks in the whole Typescript/references build. So for now, UI projects are common-js, server projects are ESM. 
 
 
 ## TSC setup
 Given the above, the goal here with `tsconfig` is to simplify the build of the main project and its dependency graph. Side benefits include VSCode also keeping track of type changes upstream among the dependencies. The main idea (in this single entry-point scenario) is to setup a root tsconfig that provides root level entry point to manage the build. Its `references` will guide `tsc` on how to build and keep things current.
 
 ### Root tsconfig
-There's a root tsconfig with `files: []` and `references: [{path: './path-to-entry-project'}]`. All projects will be configured with: `composite` and `incremental` build enabled to allow watch to more efficiently build changes.
+There's a root tsconfig with `files: []` and `references: [{path: './path-to-entry-project'}]`. All projects will be configured with: `composite` and `incremental` build enabled to allow watch to more efficiently build changes. Currently the root tsconfig references the two entry point apps: `app` and `web`.
 
 
 ### Project tsconfig

@@ -1,0 +1,26 @@
+{
+  "name": "@ts-test/lib-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "vitest": "^0.28.5"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./*": "./dist/*.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathanb/sandbox-ts-monorepo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nathanb/sandbox-ts-monorepo/issues"
+  },
+  "homepage": "https://github.com/nathanb/sandbox-ts-monorepo#readme"
+}

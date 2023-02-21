@@ -1,5 +1,7 @@
 export const multiply = (a: number, b: number) => a * b
 
+export const exponent = (a: number, b: number) => Math.pow(a,b)
+
 /**
  * Divide two numbers
  * @param a 
