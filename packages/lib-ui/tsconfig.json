@@ -1,26 +1,15 @@
 {
+  "extends": "../../tsconfig-base.json",
 	"compilerOptions": {
-		"composite": true,
-		"declaration": true,
-		"declarationMap": true,
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
-		"incremental": true,
 		"inlineSourceMap": true,
 		"jsx": "react-jsx",
 		"lib": ["dom", "dom.iterable", "esnext"],
-		"module": "ESNext",
 		"moduleResolution": "node16",
 		"outDir": "./dist",
-		"rootDir": "./src",
-		"skipLibCheck": true,
-		"strict": true,
-		"target": "esnext",
-		"types": [ "vitest/globals" ]
+		"rootDir": "./src"
 	},
 	"include": ["src"],
 	"references": [
-		{"path": "../lib-main"},
-		{"path": "../lib-shared"}
-	]
+    { "path": "../lib-shared" }
+  ]
 }

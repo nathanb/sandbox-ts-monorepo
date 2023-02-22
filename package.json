@@ -13,6 +13,7 @@
     "start": "npm run start -w web",
     "prebuild": "tsc --build --clean",
     "build": "tsc --build",
+    "test": "npm run test --if-present -ws",
     "watch": "npm-run-all -p watch:*",
     "watch:web": "npm start -w web",
     "watch:ts-deps": "tsc --build --watch"

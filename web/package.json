@@ -30,7 +30,8 @@
   "scripts": {
     "start": "GITHUB_SHA=`git rev-parse HEAD` webpack serve",
     "build": "webpack --config webpack.config.js --mode production",
-    "postbuild": "cp -R public/* dist/"
+    "postbuild": "cp -R public/* dist/",
+    "test": "vitest --run --passWithNoTests"
   },
   "repository": {
     "type": "git",

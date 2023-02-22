@@ -13,7 +13,8 @@
   },
   "scripts": {
     "start": "node .",
-    "build": "tsc --build"
+    "build": "tsc --build",
+    "test": "vitest --run --passWithNoTests"
   },
   "author": "",
   "license": "ISC"
