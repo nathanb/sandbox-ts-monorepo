@@ -16,7 +16,17 @@ npm run watch
 npm run build
 ```
 
-## Run/test
+## Clean
+```bash
+npm run prebuild
+```
+
+## Test all
+```bash
+npm test
+```
+
+## Run (the CLI)
 Build first.
 
 ```bash

@@ -1,4 +1,4 @@
-import { multiply } from '@ts-test/lib-shared'
+import shared from '@ts-test/lib-shared'
 
 export const add = (a: number, b: number) => a + b
 
@@ -8,4 +8,4 @@ export const add = (a: number, b: number) => a + b
  * @param b 
  * @returns 
  */
-export const multiplyRef = multiply
+export const multiplyRef = shared.multiply
