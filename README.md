@@ -63,9 +63,9 @@ Use:
 Webpack (or any build tool) will see this and automatically break it out into common bundles.
 
 ## Node ESM
-~~All~~ Some of these projects are currently Node ESM configured with `package.json` `type: 'module'` and `exports: {...}`. The exports define root and subpaths to resolve modules within each project. This is where the extension mapping happens and the resolution of `/*` (import path) => `/dist/*` (actual file system path). 
+~~All~~ Some of these projects (`app` and `lib-main`) are currently Node ESM configured with `package.json` `type: 'module'` and `exports: {...}`. The exports define root and subpaths to resolve modules within each project. This is where the extension mapping happens and the resolution of `/*` (import path) => `/dist/*` (actual file system path). 
 
-While webpack -> babel-typescript builds commonJS code referencing ESM dependencies just fine, it throws kinks in the whole Typescript/references build. So for now, UI projects are common-js, server projects are ESM. 
+While webpack -> babel-typescript builds commonJS code referencing ESM dependencies just fine, it throws kinks in the whole Typescript/references build. So for now, UI projects are common-js, server projects are ESM.
 
 
 ## TSC setup
@@ -77,3 +77,5 @@ There's a root tsconfig with `files: []` and `references: [{path: './path-to-ent
 
 ### Project tsconfig
 Each tsconfig is standalone and responsible for its own package. So its output paths are relative: `./dist`. Notice when doing full build generated files all land in the correct places for each of the three projects. I've also enabled `declarationMaps` and `declaration` in the `lib-*` projects to allow source mapping back from package import paths.
+
+With a recent update, I've added two sets of tsconfigs. The main one: `tsconfig.json` will be consumed by VSCode itself and applies to ALL files in the solution including test files.  `tsconfig.build.json` (and the root `tsconfig.json`) are responsible for actually building the actual runtime code (non-web projects). Each of these sets uses `references` to their corresponding configs.
