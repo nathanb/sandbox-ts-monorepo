@@ -1,16 +1,17 @@
 {
-  "extends": "../tsconfig-base.json",
+	"extends": "../tsconfig-base.json",
 	"compilerOptions": {
 		"jsx": "react-jsx",
-		"lib": ["dom", "dom.iterable", "esnext"],
-		"moduleResolution": "node16",
+		"lib": [
+			"dom",
+			"dom.iterable",
+			"esnext"
+		],
 		"noEmit": true,
 		"outDir": "./dist",
 		"rootDir": "./src"
 	},
-	"include": ["src"],
-  "references": [
-    { "path": "../packages/lib-shared" },
-    { "path": "../packages/lib-ui" }
-  ]
+	"include": [
+		"src/**/*"
+	]
 }

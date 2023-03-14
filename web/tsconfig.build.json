@@ -1,6 +1,10 @@
 {
-	"extends": "./tsconfig.json",
-	"exclude": ["**/*.test.*", "**/__tests__/*", "**/__mocks__/*"],
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "**/*.test.*",
+    "**/__tests__/*",
+    "**/__mocks__/*"
+  ],
   "references": [
     { "path": "../packages/lib-shared/tsconfig.build.json" },
     { "path": "../packages/lib-ui/tsconfig.build.json" }

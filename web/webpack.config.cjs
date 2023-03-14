@@ -32,7 +32,7 @@ function buildConfig(argv) {
 	if (!prodMode) {
 		devtool = 'source-map'
 		sourceMapLoader = {
-			test: /\.js$/,
+			test: /\.(m|c){0,1}js$/,
 			enforce: 'pre',
 			use: ['source-map-loader']
 		}
@@ -47,7 +47,7 @@ function buildConfig(argv) {
 
 	const config = {
 		entry: {
-			app: './src/index.tsx'
+			app: './src/index'
 		},
 		mode,
 		...({ devtool }),
@@ -73,7 +73,7 @@ function buildConfig(argv) {
 		module: {
 			rules: [
 				{
-					test: /\.(t|j)sx{0,1}?$/,
+					test: /\.(t|j|mj|mt|cj|ct)sx{0,1}?$/,
 					use: 'babel-loader',
 					exclude: /node_modules/
 				}
@@ -90,9 +90,9 @@ function buildConfig(argv) {
 		resolve: {
 			extensions: ['.ts', '.tsx', '.jsx', '.js', '.json', '.cjs', '.mjs', '.mts', '.cts'],
 			extensionAlias: {
-				'.js': ['.js', '.ts'],
-				'.cjs': ['.cjs', '.cts'],
-				'.mjs': ['.mjs', '.mts']
+				'.js': ['.js', '.ts', '.tsx'],
+				'.cjs': ['.cjs', '.cts', '.ctsx'],
+				'.mjs': ['.mjs', '.mts', '.mtsx']
 			}
 		},
 		plugins: [
