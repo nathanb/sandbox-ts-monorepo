@@ -8,10 +8,12 @@
     ".": "./dist/index.mjs",
     "./*": "./dist/*.mjs"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
     "@types/node": "^18.14.0",
-    "vitest": "^0.28.5"
+    "vitest": "^0.29.7"
   },
   "scripts": {
     "test": "vitest --run --passWithNoTests"

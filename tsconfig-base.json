@@ -1,20 +1,24 @@
 {
-  "compilerOptions": {
+	"compilerOptions": {
 		"composite": true,
 		"declaration": true,
 		"declarationMap": true,
 		"esModuleInterop": true,
 		"incremental": true,
 		"inlineSourceMap": true,
-		"lib": ["esnext"],
-		"module": "esnext",
+		"lib": [
+			"esnext"
+		],
+		"module": "NodeNext",
 		"moduleResolution": "nodenext",
 		"resolveJsonModule": true,
 		"skipDefaultLibCheck": true,
 		"skipLibCheck": true,
-		"target": "esnext",
-		"types": ["vitest/globals"],
-    "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
-    "strict": true,                                      /* Enable all strict type-checking options. */
-  }
+		"target": "ESNext",
+		"types": [
+			"vitest/globals"
+		],
+		"forceConsistentCasingInFileNames": true, /* Ensure that casing is correct in imports. */
+		"strict": true, /* Enable all strict type-checking options. */
+	}
 }

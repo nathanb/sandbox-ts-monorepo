@@ -1,15 +1,17 @@
 {
-  "extends": "../../tsconfig-base.json",
+	"extends": "../../tsconfig-base.json",
 	"compilerOptions": {
 		"inlineSourceMap": true,
 		"jsx": "react-jsx",
-		"lib": ["dom", "dom.iterable", "esnext"],
-		"moduleResolution": "node16",
+		"lib": [
+			"dom",
+			"dom.iterable",
+			"esnext"
+		],
 		"outDir": "./dist",
 		"rootDir": "./src"
 	},
-	"include": ["src"],
-	"references": [
-    { "path": "../lib-shared" }
-  ]
+	"include": [
+		"src/**/*"
+	]
 }
