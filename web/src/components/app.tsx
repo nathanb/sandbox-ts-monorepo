@@ -1,14 +1,18 @@
-import React from 'react'
-import { exponent } from '@ts-test/lib-shared'
-import { Thing } from '@ts-test/lib-ui/Thing'
+import React, { lazy, Suspense } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
+const Page1 = lazy(() => import('./page-1.js'))
+const Page2 = lazy(() => import('./page-2.js'))
 
 export default function App() {
 	return (
-		<div>
-			<h1>Hello world</h1>
-			<p>We have an app. {exponent(2, 3)}</p>
-			<p>test two</p>
-			<Thing />
-		</div>
+		<BrowserRouter>
+			<Suspense fallback={<div>Loading...</div>}>
+				<Routes>
+					<Route path="/" element={<Page1 />}/>
+					<Route path="/page2" element={<Page2 />}/>
+				</Routes>
+			</Suspense>
+		</BrowserRouter>
 	)
 }

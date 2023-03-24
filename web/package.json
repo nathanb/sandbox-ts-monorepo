@@ -17,6 +17,7 @@
     "babel-loader": "^9.1.0",
     "html-webpack-plugin": "^5.5.0",
     "jsdom": "^21.1.0",
+    "react-router-dom": "^6.9.0",
     "source-map-loader": "^4.0.1",
     "terser-webpack-plugin": "^5.3.6",
     "tsconfig-paths-webpack-plugin": "^4.0.0",

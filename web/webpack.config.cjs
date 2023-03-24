@@ -25,7 +25,7 @@ function buildConfig(argv) {
 	const sharedEnv = {
 		PUBLIC_URL: process.env.PUBLIC_URL || '/',
 		VERSION: require('./package.json').version,
-		VERSION_HASH: process.env.GITHUB_SHA?.substring(0, 7)
+		VERSION_HASH: process.env.GITHUB_SHA?.substring(0, 7) // This is just sugar. Meant to be read from env in case CI checkout folder has no git-history.
 	}
 
 	let devtool; let plugins = []; let sourceMapLoader
@@ -96,6 +96,7 @@ function buildConfig(argv) {
 			}
 		},
 		plugins: [
+			...plugins,
 			// new MiniCssExtractPlugin(),
 			new HtmlWebpackPlugin({
 				template: path.join(__dirname, './src/index.html'),
@@ -112,7 +113,6 @@ function buildConfig(argv) {
 		}
 	}
 	if (sourceMapLoader) config.module.rules.push(sourceMapLoader)
-	config.plugins.push(...plugins)
 	return config
 }
 
