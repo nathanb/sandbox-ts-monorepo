@@ -1,4 +1,4 @@
-name: Push to main with lib-ui changes
+name: PR to main
 
 on:
   pull_request:

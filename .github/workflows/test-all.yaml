@@ -1,4 +1,4 @@
-name: Run lib-ui tests
+name: Run all tests
 
 on:
   workflow_call:
