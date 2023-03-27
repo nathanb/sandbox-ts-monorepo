@@ -4,9 +4,9 @@ export const exponent = (a: number, b: number) => Math.pow(a, b)
 
 /**
  * Divide two numbers
- * @param a 
- * @param b 
- * @returns 
+ * @param a
+ * @param b
+ * @returns
  */
 export const divide = (a: number, b: number) => {
 	if (b === 0) throw new Error('div by zero')
