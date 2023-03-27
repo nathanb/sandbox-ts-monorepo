@@ -2,6 +2,7 @@ import React from 'react'
 import { exponent } from '@ts-test/lib-shared'
 import { Thing } from '@ts-test/lib-ui/Thing'
 import { Link } from 'react-router-dom'
+import { TestComponent } from './testLocalComponent.js'
 
 export const Page1 = () => {
 	return (
@@ -10,6 +11,7 @@ export const Page1 = () => {
 			<p>We have an app. {exponent(2, 3)}</p>
 			<p>test two</p>
 			<Thing />
+			<TestComponent />
 			<p><Link to="/page2">Page 2</Link></p>
 		</>
 	)
