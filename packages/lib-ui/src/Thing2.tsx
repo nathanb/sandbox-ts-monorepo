@@ -4,7 +4,7 @@ import { multiply } from '@ts-test/lib-shared'
 export const Thing2 = () => {
 	return (
 		<p>
-			Thing: <code>{multiply(2,3)}</code> should be six.
+			Thing: <code data-testid="value">{multiply(2, 3)}</code> should be six.
 		</p>
 	)
 }

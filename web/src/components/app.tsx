@@ -9,8 +9,8 @@ export default function App() {
 		<BrowserRouter>
 			<Suspense fallback={<div>Loading...</div>}>
 				<Routes>
-					<Route path="/" element={<Page1 />}/>
-					<Route path="/page2" element={<Page2 />}/>
+					<Route path="/" element={<Page1 />} />
+					<Route path="/page2" element={<Page2 />} />
 				</Routes>
 			</Suspense>
 		</BrowserRouter>

@@ -1,0 +1,22 @@
+name: Publish lib-ui
+
+on:
+  workflow_call:
+  
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@ts-test'
+      - run: npm ci -w packages/lib-ui -w packages/lib-shared
+        # env:
+        #   NODE_AUTH_TOKEN: ${{ secrets.PRIVATE_AUTH_IF_YOU_NEED_IT }}
+      - run: npx tsc --build packages/lib-ui
+      - run: npm publish --access public -w packages/lib-ui
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

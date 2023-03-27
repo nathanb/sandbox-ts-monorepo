@@ -1,0 +1,28 @@
+name: Bump lib-ui version
+
+on:
+  workflow_call:
+
+jobs:
+  set-version:
+    # needs: test-runtime
+    name: Bump package versions
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@ts-test'
+      - run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git fetch
+          git pull origin main
+          npm version patch -w packages/lib-ui
+          git add . -A
+          git commit -m 'CI Version bump'
+          git push
+          git push --tags
