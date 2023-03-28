@@ -51,16 +51,20 @@ With this monorepo using npm workspaces, each workspace will automatically link 
 ## Web projects
 I've intentionally avoided CRA in this scenario for flexibility. Also, to keep things simple, I've elected not to use ESM for the web and UI packages. So `web` and `packages/lib-ui` both are `CommonJS` packages with `module: ESNext`. `tsc` will build the `lib-ui` project itself, but `web` has `emit: false` since it relies on `babel-typescript` and webpack. `lib-shared` has been switched to CommonJS as well for simplicity. The major benefit here (as a monorepo and tsc watch) is the ability to have a separate React component package that automatically refreshes upon save in the web app. This is typically a challenge due to conflicting react and react-dom instances. But here, npm workspaces solves that for us with auto-linking and package sharing.
 
-## Code splitting
+## Code splitting & Tree shaking
 Did I mention code-splitting? All of these projects are built with ESNext and are capable of code splitting via sub-path imports.
 
 i.e. Rather than:
+(Importing module from the root package index)
 `import { Thing } from '@ts-test/lib-ui'`
 
-Use:
+Use subpaths:
+
 `import { Thing } from '@ts-test/lib-ui/Thing'`
 
-Webpack (or any build tool) will see this and automatically break it out into common bundles.
+or (for React code-splitting)
+
+`lazy(() => import('@ts-test/lib-ui/Thing'))`
 
 ## Node ESM
 ~~All~~ Some of these projects (`app` and `lib-main`) are currently Node ESM configured with `package.json` `type: 'module'` and `exports: {...}`. The exports define root and subpaths to resolve modules within each project. This is where the extension mapping happens and the resolution of `/*` (import path) => `/dist/*` (actual file system path). 
