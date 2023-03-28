@@ -52,7 +52,7 @@ With this monorepo using npm workspaces, each workspace will automatically link 
 I've intentionally avoided CRA in this scenario for flexibility. Also, to keep things simple, I've elected not to use ESM for the web and UI packages. So `web` and `packages/lib-ui` both are `CommonJS` packages with `module: ESNext`. `tsc` will build the `lib-ui` project itself, but `web` has `emit: false` since it relies on `babel-typescript` and webpack. `lib-shared` has been switched to CommonJS as well for simplicity. The major benefit here (as a monorepo and tsc watch) is the ability to have a separate React component package that automatically refreshes upon save in the web app. This is typically a challenge due to conflicting react and react-dom instances. But here, npm workspaces solves that for us with auto-linking and package sharing.
 
 ## Code splitting & Tree shaking
-Did I mention code-splitting? All of these projects are built with ESNext and are capable of code splitting via sub-path imports.
+Did I mention code-splitting? All of these projects are built with ESNext and are capable of code splitting via sub-path imports. Take a peek at the `lib-shared` [exports config](https://github.com/nathanb/sandbox-ts-monorepo/blob/main/packages/lib-shared/package.json#L9)
 
 i.e. Rather than:
 (Importing module from the root package index)
