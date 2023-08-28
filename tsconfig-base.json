@@ -1,24 +1,24 @@
 {
 	"compilerOptions": {
+		"allowJs": true,
 		"composite": true,
 		"declaration": true,
 		"declarationMap": true,
 		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true, /* Ensure that casing is correct in imports. */
 		"incremental": true,
 		"inlineSourceMap": true,
 		"lib": [
 			"esnext"
 		],
-		"module": "NodeNext",
+		"module": "ESNext",
 		"moduleResolution": "nodenext",
 		"resolveJsonModule": true,
 		"skipDefaultLibCheck": true,
 		"skipLibCheck": true,
-		"target": "ESNext",
+		"target": "esnext",
 		"types": [
 			"vitest/globals"
-		],
-		"forceConsistentCasingInFileNames": true, /* Ensure that casing is correct in imports. */
-		"strict": true, /* Enable all strict type-checking options. */
+		]
 	}
 }

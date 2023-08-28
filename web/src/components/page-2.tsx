@@ -1,5 +1,5 @@
 import React from 'react'
-import { Thing2 } from '@ts-test/lib-ui/Thing2'
+import { Thing2 } from '@potatoes/lib-ui/Thing2'
 import { Link } from 'react-router-dom'
 
 export const Page2 = () => {

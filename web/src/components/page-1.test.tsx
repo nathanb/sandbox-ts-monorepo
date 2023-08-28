@@ -6,12 +6,12 @@ import { BrowserRouter } from 'react-router-dom'
 /**
  * NOTE: This is not how vitest automocking is supposed to work. Our actual
  * ref in the component excludes extensions because of our package.json
- * exports mapping config. `import { Thing } from '@ts-test/lib-ui/Thing'`
+ * exports mapping config. `import { Thing } from '@potatoes/lib-ui/Thing'`
  * Inter-package references follow the package.json rules; but here, they do not because
  * the reference is made within the module. Therefore it has to follow ESM resolve
  * rules and include the extension. So we're importing it directly.
  */
-vi.mock('@ts-test/lib-ui/Thing', () => vi.importActual('../../__mocks__/@ts-test/lib-ui/Thing.js'))
+vi.mock('@potatoes/lib-ui/Thing', () => vi.importActual('../../__mocks__/@potatoes/lib-ui/Thing.js'))
 
 /**
  * NOTE: Normal automocking (local modules)

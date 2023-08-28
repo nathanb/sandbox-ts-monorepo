@@ -1,5 +1,5 @@
 {
-  "name": "@ts-test/web",
+  "name": "@potatoes/web",
   "version": "1.0.0",
   "description": "",
   "type": "module",
@@ -38,6 +38,7 @@
   },
   "scripts": {
     "start": "GITHUB_SHA=`git rev-parse HEAD` webpack serve",
+    "prebuild": "rimraf dist",
     "build": "webpack --config webpack.config.cjs --mode production",
     "postbuild": "cp -R public/* dist/",
     "test": "vitest --run --passWithNoTests"

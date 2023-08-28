@@ -1,5 +1,5 @@
 import React from 'react'
-import { multiply } from '@ts-test/lib-shared'
+import { multiply } from '@potatoes/lib-shared'
 
 export const Thing2 = () => {
 	return (

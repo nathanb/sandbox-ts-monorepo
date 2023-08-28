@@ -1,5 +1,5 @@
-import { add, multiplyRef } from '@ts-test/lib-main'
-import shared from '@ts-test/lib-shared'
+import { add, multiplyRef } from '@potatoes/lib-main'
+import shared from '@potatoes/lib-shared'
 
 export const main = (args?: string[]) => {
 	console.log(`args: ${args?.join(',')}`)

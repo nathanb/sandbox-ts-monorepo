@@ -1,5 +1,5 @@
 {
-  "name": "@ts-test/app",
+  "name": "@potatoes/app",
   "version": "1.0.0",
   "description": "",
   "main": "./dist/index.mjs",
@@ -19,6 +19,7 @@
   },
   "scripts": {
     "start": "node .",
+    "prebuild": "tsc --build --clean && rimraf dist",
     "build": "tsc --build",
     "test": "vitest --run --passWithNoTests"
   },

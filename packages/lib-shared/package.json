@@ -1,5 +1,5 @@
 {
-  "name": "@ts-test/lib-shared",
+  "name": "@potatoes/lib-shared",
   "version": "1.0.0",
   "description": "",
   "main": "./dist/index.js",
@@ -22,7 +22,8 @@
     "vitest": "^0.34.2"
   },
   "scripts": {
-    "test": "vitest --run --passWithNoTests"
+    "test": "vitest --run --passWithNoTests",
+    "prebuild": "rimraf dist"
   },
   "author": "",
   "license": "ISC"

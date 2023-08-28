@@ -1,12 +1,6 @@
 {
-	"extends": "../tsconfig-base.json",
+	"extends": "../tsconfig-react.json",
 	"compilerOptions": {
-		"jsx": "react-jsx",
-		"lib": [
-			"dom",
-			"dom.iterable",
-			"esnext"
-		],
 		"noEmit": true,
 		"outDir": "./dist",
 		"rootDir": "./src"

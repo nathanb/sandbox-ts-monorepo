@@ -1,5 +1,5 @@
 {
-  "name": "@ts-test/lib-ui",
+  "name": "@potatoes/lib-ui",
   "version": "1.0.0",
   "description": "",
   "main": "./dist/index.js",
@@ -32,7 +32,8 @@
     "./*": "./dist/*.js"
   },
   "scripts": {
-    "test": "vitest --run --passWithNoTests"
+    "test": "vitest --run --passWithNoTests",
+    "prebuild": "rimraf dist"
   },
   "repository": {
     "type": "git",

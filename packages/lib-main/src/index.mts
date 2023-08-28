@@ -1,4 +1,4 @@
-import shared from '@ts-test/lib-shared'
+import shared from '@potatoes/lib-shared'
 
 export const add = (a: number, b: number) => a + b
 
