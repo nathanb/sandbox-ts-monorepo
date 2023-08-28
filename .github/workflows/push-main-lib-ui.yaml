@@ -2,16 +2,16 @@ name: Push to main with lib-ui changes
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
     paths:
-      - 'packages/lib-ui/**'
+      - "packages/lib-ui/**"
 
 jobs:
-  run-tests:
+  test-lib-ui:
     if: ${{ !contains(github.event.head_commit.message, '#skip') }}
     uses: ./.github/workflows/test-lib-ui.yaml
     secrets: inherit
-  # version:
+  # version-lib-ui:
   #   if: ${{ !contains(github.event.head_commit.message, '#skip') }}
   #   uses: ./.github/workflows/version-lib-ui.yaml
   #   secrets: inherit

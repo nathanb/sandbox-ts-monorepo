@@ -20,6 +20,6 @@ jobs:
         # env:
         #   NODE_AUTH_TOKEN: ${{ secrets.IF_YOU_NEED_THIS_FOR_PRIVATE_PKGS }}
       - name: Build
-        run: npm run build
+        run: npm run build:ts
       - name: Run tests
         run: npm run test -w packages/lib-ui

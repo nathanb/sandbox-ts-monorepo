@@ -4,7 +4,7 @@ on:
   workflow_call:
 
 jobs:
-  publish:
+  publish-lib-ui:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
