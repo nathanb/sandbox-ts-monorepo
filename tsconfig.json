@@ -5,7 +5,7 @@
       "path": "./app/tsconfig.build.json"
     },
     {
-      "path": "./web/tsconfig.build.json"
+      "path": "./packages/lib-ui/tsconfig.build.json"
     }
   ]
 }

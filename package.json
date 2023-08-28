@@ -11,8 +11,10 @@
   },
   "scripts": {
     "start": "npm start -w app",
-    "prebuild": "tsc --build --clean && npm run prebuild -ws",
-    "build": "tsc --build && npm run build -w web",
+    "build": "npm-run-all -s build:ts build:web",
+    "prebuild:ts": "tsc --build --clean",
+    "build:ts": "tsc --build",
+    "build:web": "npm run build -w web",
     "test": "npm run test --if-present -ws",
     "watch": "npm-run-all -p watch:*",
     "watch:web": "npm start -w web",

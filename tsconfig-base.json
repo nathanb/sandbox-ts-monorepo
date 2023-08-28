@@ -11,8 +11,8 @@
 		"lib": [
 			"esnext"
 		],
-		"module": "ESNext",
-		"moduleResolution": "nodenext",
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
 		"resolveJsonModule": true,
 		"skipDefaultLibCheck": true,
 		"skipLibCheck": true,

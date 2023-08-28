@@ -12,14 +12,14 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 18
-          registry-url: 'https://npm.pkg.github.com'
-          scope: '@ts-test'
+          node-version: 20
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@potatoes"
       - name: Install Dependencies
-        run: npm ci -w packages/lib-ui -w packages/lib-shared
+        run: npm ci
         # env:
         #   NODE_AUTH_TOKEN: ${{ secrets.IF_YOU_NEED_THIS_FOR_PRIVATE_PKGS }}
       - name: Build
-        run: npx tsc --build packages/lib-ui
+        run: npm run build
       - name: Run tests
         run: npm run test -w packages/lib-ui
