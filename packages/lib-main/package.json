@@ -16,6 +16,7 @@
     "@typescript-eslint/eslint-plugin": "^6.4.1",
     "@typescript-eslint/parser": "^6.4.1",
     "chai": "^4.3.7",
+    "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.1.1",
@@ -23,7 +24,8 @@
   },
   "scripts": {
     "test": "vitest --run --passWithNoTests",
-    "prebuild": "rimraf dist"
+    "prebuild": "rimraf dist",
+    "lint": "npx eslint src"
   },
   "author": "",
   "license": "ISC"

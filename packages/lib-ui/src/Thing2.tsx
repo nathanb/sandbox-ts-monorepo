@@ -1,4 +1,3 @@
-import React from 'react'
 import { multiply } from '@potatoes/lib-shared'
 
 export const Thing2 = () => {

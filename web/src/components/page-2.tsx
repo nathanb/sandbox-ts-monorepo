@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { Thing2 } from '@potatoes/lib-ui/Thing2'
 import { Link } from 'react-router-dom'
 

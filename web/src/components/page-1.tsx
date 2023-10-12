@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { exponent } from '@potatoes/lib-shared'
 import { Thing } from '@potatoes/lib-ui/Thing'
 import { Link } from 'react-router-dom'

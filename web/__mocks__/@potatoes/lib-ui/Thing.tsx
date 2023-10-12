@@ -1,5 +1,3 @@
-import React from 'react'
+// Automock example.
 
 export const Thing = () => <span>Thing1</span>
-
-export default { Thing }
