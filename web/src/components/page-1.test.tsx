@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react'
+import { FC, ReactNode } from 'react'
 import { render, screen } from '@testing-library/react'
 import Page1 from './page-1.js'
 import { BrowserRouter } from 'react-router-dom'
@@ -24,7 +24,7 @@ const Wrapper: FC<{ children?: ReactNode }> = ({ children }) => {
 }
 
 describe('page-1', () => {
-	test('simple render', async() => {
+	test('simple render', async () => {
 		render(<Page1 />, { wrapper: Wrapper })
 		expect(screen.getByText('Thing1')).to.be.ok
 		expect(screen.getByText('TestComponent')).to.be.ok
