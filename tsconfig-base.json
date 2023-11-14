@@ -1,24 +1,22 @@
 {
 	"compilerOptions": {
-		"allowJs": true,
+		"allowJs": false,
 		"composite": true,
 		"declaration": true,
 		"declarationMap": true,
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true, /* Ensure that casing is correct in imports. */
 		"incremental": true,
-		"inlineSourceMap": true,
-		"lib": [
-			"esnext"
-		],
+		"lib": [ "esnext" ],
 		"module": "NodeNext",
-		"moduleResolution": "NodeNext",
+		"moduleResolution": "nodenext",
+		"noImplicitAny": true,
 		"resolveJsonModule": true,
 		"skipDefaultLibCheck": true,
 		"skipLibCheck": true,
-		"target": "esnext",
-		"types": [
-			"vitest/globals"
-		]
+		"sourceMap": true,
+		"strict": true,
+		"target": "ESNext",
+		"types": [ "vitest/globals"	]
 	}
 }

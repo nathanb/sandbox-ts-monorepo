@@ -1,6 +1,6 @@
 {
 	"extends": [
-		"./eslint-base-config.json",
+		"./eslint-base.json",
 		"plugin:node/recommended"
 	],
 
@@ -12,7 +12,7 @@
 		"node/no-missing-import": "off",
 		"node/no-unsupported-features/es-syntax": "off",
 		"node/no-extraneous-import": ["error", {
-			"allowModules": ["@potatoes/lib-main", "@potatoes/lib-ui", "@potatoes/lib-shared"]
+			"allowModules": ["@potatoes/lib-shared", "@potatoes/lib-ui", "@potatoes/lib-main"]
 		}]
 	}
 }

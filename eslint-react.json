@@ -1,6 +1,6 @@
 {
 	"extends": [
-		"./eslint-base-config.json",
+		"./eslint-base.json",
 		"plugin:react/recommended"
 	],
 

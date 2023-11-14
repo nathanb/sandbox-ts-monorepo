@@ -1,5 +1,5 @@
 import { add, multiplyRef } from '@potatoes/lib-main'
-import shared from '@potatoes/lib-shared'
+import * as shared from '@potatoes/lib-shared'
 
 export const main = (args?: string[]) => {
 	console.log(`args: ${args?.join(',')}`)

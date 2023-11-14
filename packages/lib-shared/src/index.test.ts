@@ -1,4 +1,4 @@
-import { divide, exponent, multiply } from './index.mjs'
+import { divide, exponent, multiply } from './index.js'
 
 describe('index', () => {
 	test('multiply', async () => {

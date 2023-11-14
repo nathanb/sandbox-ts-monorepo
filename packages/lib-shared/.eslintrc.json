@@ -1,5 +1,5 @@
 {
 	"extends": [
-		"../../eslint-base-config.json"
+		"../../eslint-base.json"
 	]
 }
