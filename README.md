@@ -10,7 +10,7 @@ npm i
 Edit and save any source file. This runs both `tsc --build --watch` and webpack dev server in parallel. Browse to: http://localhost:3000
 
 ```bash
-npm run watch
+npm run dev
 ```
 
 ## Build

@@ -12,7 +12,7 @@
 		"node/no-missing-import": "off",
 		"node/no-unsupported-features/es-syntax": "off",
 		"node/no-extraneous-import": ["error", {
-			"allowModules": ["@potatoes/lib-shared", "@potatoes/lib-ui", "@potatoes/lib-main"]
+			"allowModules": ["@potatoes/lib-main", "@potatoes/lib-shared", "@potatoes/lib-ui"]
 		}]
 	}
 }
