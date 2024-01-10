@@ -2,7 +2,7 @@
 import { exponent } from '@potatoes/lib-shared'
 import { Thing } from '@potatoes/lib-ui/Thing'
 import { Link } from 'react-router-dom'
-import { TestComponent } from './testLocalComponent.js'
+import { TestComponent } from './TestComponent.js'
 
 export const Page1 = () => {
 	return (

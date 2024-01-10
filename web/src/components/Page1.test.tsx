@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react'
 import { render, screen } from '@testing-library/react'
-import Page1 from './page-1.js'
+import Page1 from './Page1.js'
 import { BrowserRouter } from 'react-router-dom'
 
 /**
@@ -17,7 +17,7 @@ vi.mock('@potatoes/lib-ui/Thing', () => vi.importActual('../../__mocks__/@potato
  * NOTE: Normal automocking (local modules)
  * Local modules already resolving with extension locally can be auto-mocked normally.
  */
-vi.mock('./testLocalComponent.js')
+vi.mock('./TestComponent.js')
 
 const Wrapper: FC<{ children?: ReactNode }> = ({ children }) => {
 	return <BrowserRouter>{children}</BrowserRouter>

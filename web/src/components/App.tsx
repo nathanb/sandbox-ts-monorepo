@@ -1,8 +1,8 @@
 import React, { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-const Page1 = lazy(() => import('./page-1.js'))
-const Page2 = lazy(() => import('./page-2.js'))
+const Page1 = lazy(() => import('./Page1.js'))
+const Page2 = lazy(() => import('./Page2.js'))
 
 export default function App() {
 	return (

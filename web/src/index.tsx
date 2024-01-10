@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client'
-import App from './components/app.js'
+import App from './components/App.js'
 import reportWebVitals from './reportWebVitals.mjs'
 import { StrictMode } from 'react'
 
