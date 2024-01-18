@@ -2,7 +2,7 @@
 
 ```bash
 # install all deps for all workspaces
-npm i
+npm ci
 ```
 
 ## Watch mode
@@ -46,6 +46,17 @@ divide 2/3: 0.6666666666666666
 multiply 2*3: 6
 multiplyRef 2*3: 6
 ```
+
+## Running dev with Docker
+Ideally, we run the web app in docker so we can pair it with other service dependencies like an API or whatever. In this example, you can see this with: 
+
+```bash
+docker compose up
+```
+Browse to: `http://localhost:3000`
+
+If you make changes to any code in the `lib-ui`, `lib-shared`, or `web`, you'll see an immediate browser refresh with the latest change.
+
 
 ## Big picture
 
