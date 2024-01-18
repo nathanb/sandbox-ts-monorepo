@@ -19,10 +19,7 @@
     "build:ts": "tsc --build",
     "build:web": "npm run build -w web",
     "test": "npm run test --if-present -ws",
-    "dev": "npm-run-all -p watch:*",
-    "watch:web": "npm start -w web",
-    "prewatch:ts": "tsc --build --clean",
-    "watch:ts": "tsc --build --watch"
+    "dev": "npm start -w web"
   },
   "author": "",
   "license": "ISC",

@@ -1,7 +1,6 @@
 {
 	"extends": "../tsconfig-react.json",
 	"compilerOptions": {
-		"noEmit": true,
 		"outDir": "./dist",
 		"rootDir": "./src"
 	},

@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom/client'
 import App from './components/App.js'
 import reportWebVitals from './reportWebVitals.mjs'
 import { StrictMode } from 'react'
+import './stylesheets/index.css'
 
 const root = ReactDOM.createRoot(
 	document.getElementById('root') as HTMLElement

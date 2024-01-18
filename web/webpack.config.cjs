@@ -7,6 +7,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const TerserPlugin = require('terser-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 function transformSharedToDefine(shared) {
 	const result = {}
@@ -64,27 +65,29 @@ function buildConfig(argv) {
 				directory: path.join(__dirname, 'public')
 			},
 			compress: true,
-			port: process.env.PORT || 3000,
-		},
-		watchOptions: {
-			aggregateTimeout: 2500,
-			poll: 1000,
+			port: process.env.PORT || 3000
 		},
 		module: {
 			rules: [
 				{
-					test: /\.(t|j|mj|mt|cj|ct)sx{0,1}?$/,
-					use: 'babel-loader',
-					exclude: /node_modules/
+					test: /\.(t|mt|ct)sx{0,1}?$/,
+					exclude: /node_modules/,
+					use: {
+						loader: 'ts-loader',
+						options: {
+							configFile: 'tsconfig.build.json',
+							projectReferences: true
+						}
+					}
+				},
+				{
+					test: /\.css$/i,
+					use: [
+						prodMode ? MiniCssExtractPlugin.loader : 'style-loader',
+						'css-loader',
+						'postcss-loader'
+					]
 				}
-				// {
-				// 	test: /\.css$/i,
-				// 	use: [
-				// 		prodMode ? MiniCssExtractPlugin.loader : 'style-loader',
-				// 		'css-loader',
-				// 		'postcss-loader'
-				// 	]
-				// }
 			]
 		},
 		resolve: {
@@ -97,7 +100,7 @@ function buildConfig(argv) {
 		},
 		plugins: [
 			...plugins,
-			// new MiniCssExtractPlugin(),
+			new MiniCssExtractPlugin(),
 			new HtmlWebpackPlugin({
 				template: path.join(__dirname, './src/index.html'),
 				templateParameters: sharedEnv,

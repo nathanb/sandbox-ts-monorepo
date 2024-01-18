@@ -1,0 +1,20 @@
+version: "3.4"
+services:
+  web:
+    build:
+      target: builder-dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./package.json:/home/node/app/package.json
+      - ./web/src:/home/node/app/web/src
+      - ./web/package.json:/home/node/app/web/package.json
+      - ./packages/lib-ui/src:/home/node/app/packages/lib-ui/src
+      - ./packages/lib-ui/package.json:/home/node/app/packages/lib-ui/package.json
+      - ./packages/lib-shared/src:/home/node/app/packages/lib-shared/src
+      - ./packages/lib-shared/package.json:/home/node/app/packages/lib-shared/package.json
+    tty: true
+    environment:
+      PORT: 3000
+      NODE_ENV: development
+    command: npm run dev # default, but we'll set it anyway
