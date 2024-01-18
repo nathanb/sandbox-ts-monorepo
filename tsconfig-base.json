@@ -9,7 +9,7 @@
 		"incremental": true,
 		"lib": [ "esnext" ],
 		"module": "NodeNext",
-		"moduleResolution": "nodenext",
+		"moduleResolution": "NodeNext",
 		"noImplicitAny": true,
 		"resolveJsonModule": true,
 		"skipDefaultLibCheck": true,

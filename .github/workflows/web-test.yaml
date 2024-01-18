@@ -1,0 +1,25 @@
+name: "@potatoes/web: Test"
+
+on:
+  workflow_call:
+
+jobs:
+  test-runtime:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          # registry-url: "https://npm.pkg.github.com" #if you use github package repo
+          scope: "@potatoes"
+      - name: Install Dependencies
+        run: npm ci
+        # env:
+        #   NODE_AUTH_TOKEN: ${{ secrets.IF_YOU_NEED_THIS_FOR_PRIVATE_PKGS }}
+      # skipping build because vitest doesn't need it. You should properly mock out deps though. Test only code in each layer
+      - name: Build
+        run: npm run build:ts -w apps/web
+      - name: Run web related tests
+        run: npm run test -w apps/web -w packages/lib-shared -w packages/lib-ui

@@ -1,0 +1,27 @@
+name: "@potatoes/app: Bump all versions"
+
+on:
+  workflow_call:
+
+jobs:
+  set-version:
+    # needs: test-runtime
+    name: Bump all versions
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git fetch
+          git pull origin main
+          npm version patch -ws --include-workspace-root --no-git-tag-version && git add .
+          VER=`node ./npm-version-helper.cjs .`
+          git commit -m "app version bump to $VER"
+          git tag -am "App publish, $VER." "$VER"
+          git push
+          git push --tags

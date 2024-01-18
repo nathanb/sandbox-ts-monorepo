@@ -9,7 +9,7 @@ export const Page1 = () => {
 		<>
 			<h1>Hello world</h1>
 			<p>We have an app. {exponent(2, 3)}</p>
-			<p>test two</p>
+			<p>test three</p>
 			<Thing />
 			<TestComponent />
 			<p><Link to="/page2">Page 2</Link></p>

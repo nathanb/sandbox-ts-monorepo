@@ -13,21 +13,21 @@
     "npm-run-all": "^4.1.5"
   },
   "scripts": {
-    "start": "npm start -w app",
+    "start": "npm start -w apps/app",
     "build": "npm-run-all -s build:ts build:web",
     "prebuild:ts": "tsc --build --clean",
     "build:ts": "tsc --build",
-    "build:web": "npm run build -w web",
+    "build:web": "npm run build -w apps/web",
     "test": "npm run test --if-present -ws",
-    "dev": "npm start -w web"
+    "dev": "npm start -w apps/web"
   },
   "author": "",
   "license": "ISC",
   "workspaces": [
-    "app",
+    "apps/app",
     "packages/lib-main",
     "packages/lib-shared",
-    "web",
+    "apps/web",
     "packages/lib-ui"
   ]
 }

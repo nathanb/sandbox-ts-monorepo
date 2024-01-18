@@ -1,7 +1,7 @@
 export const Thing = () => {
 	return (
 		<p>
-			Thing
+			Something one
 		</p>
 	)
 }

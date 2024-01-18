@@ -1,11 +1,10 @@
-name: Run lib-ui tests
+name: "@potatoes/app: Test"
 
 on:
   workflow_call:
 
 jobs:
   test-runtime:
-    if: ${{ !contains(github.event.head_commit.message, '#skip') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -19,7 +18,8 @@ jobs:
         run: npm ci
         # env:
         #   NODE_AUTH_TOKEN: ${{ secrets.IF_YOU_NEED_THIS_FOR_PRIVATE_PKGS }}
+      # skipping build because vitest doesn't need it. You should properly mock out deps though. Test only code in each layer
       - name: Build
-        run: npm run build:ts
-      - name: Run tests
-        run: npm run test -w packages/lib-ui
+        run: npm run build -w apps/app
+      - name: Run app related tests
+        run: npm run test -w apps/app -w packages/lib-shared -w packages/lib-main

@@ -7,8 +7,8 @@ services:
       - "3000:3000"
     volumes:
       - ./package.json:/home/node/app/package.json
-      - ./web/src:/home/node/app/web/src
-      - ./web/package.json:/home/node/app/web/package.json
+      - ./apps/web/src:/home/node/app/apps/web/src
+      - ./apps/web/package.json:/home/node/app/apps/web/package.json
       - ./packages/lib-ui/src:/home/node/app/packages/lib-ui/src
       - ./packages/lib-ui/package.json:/home/node/app/packages/lib-ui/package.json
       - ./packages/lib-shared/src:/home/node/app/packages/lib-shared/src

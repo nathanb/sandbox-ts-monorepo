@@ -1,8 +1,0 @@
-{
-	"extends": "./tsconfig.json",
-	"exclude": ["**/*.test.*", "**/__tests__/*", "**/__mocks__/*"],
-  "references": [
-    { "path": "../packages/lib-main/tsconfig.build.json" },
-    { "path": "../packages/lib-shared/tsconfig.build.json" }
-  ]
-}
