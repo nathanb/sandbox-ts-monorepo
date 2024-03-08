@@ -1,14 +1,4 @@
-# Docker mode:
-This section covers how to run the code in a docker container for development.
-
-```bash
-npm ci # install deps for types and linting. (optional)
-docker compose up
-```
-
-Edit and save any source file. Browse to: http://localhost:3000
-
-# Local mode:
+# Local dev mode:
 This section explains how to install and run the code locally on your machine. 
 
 ## Install
@@ -63,7 +53,8 @@ multiply 2*3: 6
 multiplyRef 2*3: 6
 ```
 
-## Running dev with Docker
+# Running dev with Docker
+
 Ideally, we run the web app in docker so we can pair it with other service dependencies like an API or whatever. In this example, you can see this with: 
 
 ```bash
@@ -74,7 +65,7 @@ Browse to: `http://localhost:3000`
 If you make changes to any code in the `lib-ui`, `lib-shared`, or `web`, you'll see an immediate browser refresh with the latest change.
 
 
-## Big picture
+# Big picture
 
 We're combining both Typescript's build system with npm workspaces to simplify monorepo configuration.
 
