@@ -1,7 +1,19 @@
+# Docker mode:
+This section covers how to run the code in a docker container for development.
+
+```bash
+npm ci # install deps for types and linting. (optional)
+docker compose up
+```
+
+Edit and save any source file. Browse to: http://localhost:3000
+
+# Local mode:
+This section explains how to install and run the code locally on your machine. 
+
 ## Install
 
 ```bash
-# install all deps for all workspaces
 npm ci
 ```
 
@@ -33,9 +45,13 @@ npm test
 
 ## Run (the CLI)
 
-Build first.
+NOTE for Docker: I didn't setup a docker-compose service for this, but you can run it in docker just the same by running `docker compose run web /bin/sh` and then interactively running the commands below.
+
 
 ```bash
+# Build first if you haven't already. Docker is already built.
+npm run build # if necessary
+
 # npm start [any args]
 npm start test-arg
 

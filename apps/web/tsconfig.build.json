@@ -6,7 +6,7 @@
     "**/__mocks__/*"
   ],
   "references": [
-    { "path": "../packages/lib-shared/tsconfig.build.json" },
-    { "path": "../packages/lib-ui/tsconfig.build.json" }
+    { "path": "../../packages/lib-shared/tsconfig.build.json" },
+    { "path": "../../packages/lib-ui/tsconfig.build.json" }
   ]
 }

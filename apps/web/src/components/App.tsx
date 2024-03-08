@@ -1,11 +1,11 @@
-import React, { lazy, Suspense } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { lazy, Suspense } from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Layout } from './Layout.js'
 
 const Page1 = lazy(() => import('./Page1.js'))
 const Page2 = lazy(() => import('./Page2.js'))
 
-export default function App() {
+export function App() {
 	return (
 		<BrowserRouter>
 			<Suspense fallback={<div>Loading...</div>}>

@@ -1,0 +1,22 @@
+name: "@potatoes/web: PUSH to main"
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'apps/web/**'
+      - 'packages/lib-{ui,shared}/**'
+
+jobs:
+  run_tests:
+    if: ${{ !contains(github.event.head_commit.message, '#skip') }}
+    uses: ./.github/workflows/web-test.yaml
+  version:
+    needs: run_tests
+    if: ${{ !contains(github.event.head_commit.message, '#skip') }}
+    uses: ./.github/workflows/web-version.yaml
+  # deploy:
+  #   needs: version
+  #   if: ${{ !contains(github.event.head_commit.message, '#skip') }}
+  #   uses: ./.github/workflows/web-deploy.yaml
+  #   secrets: inherit

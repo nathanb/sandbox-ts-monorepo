@@ -11,7 +11,7 @@ import { BrowserRouter } from 'react-router-dom'
  * the reference is made within the module. Therefore it has to follow ESM resolve
  * rules and include the extension. So we're importing it directly.
  */
-vi.mock('@potatoes/lib-ui/Thing', () => vi.importActual('../../__mocks__/@potatoes/lib-ui/Thing.js'))
+vi.mock('@potatoes/lib-ui/Thing', () => vi.importActual('../__mocks__/@potatoes/lib-ui/Thing.js'))
 
 /**
  * NOTE: Normal automocking (local modules)
@@ -24,7 +24,7 @@ const Wrapper: FC<{ children?: ReactNode }> = ({ children }) => {
 }
 
 describe('page-1', () => {
-	test('simple render', async () => {
+	test('page-1, simple render', async () => {
 		render(<Page1 />, { wrapper: Wrapper })
 		expect(screen.getByText('Thing1')).to.be.ok
 		expect(screen.getByText('TestComponent')).to.be.ok

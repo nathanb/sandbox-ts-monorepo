@@ -1,0 +1,16 @@
+name: "@potatoes/web: Deploy to Fly"
+
+on:
+  workflow_call:
+
+jobs:
+  deploy:
+    name: Deploy to Fly
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - run: git fetch && git pull origin main
+      - run: flyctl deploy --build-arg PUBLIC_URL="/"
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}

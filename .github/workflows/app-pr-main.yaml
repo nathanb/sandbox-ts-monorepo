@@ -1,0 +1,15 @@
+name: "@potatoes/app: PR to main"
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'apps/**'
+      - 'packages/lib-{main,shared}/**'
+
+jobs:
+  test:
+    # PRs in draft mode or commits containing #skip will not trigger action.
+    if: ${{github.event.pull_request.draft == false && !contains(github.event.head_commit.message, '#skip') }}
+    uses: ./.github/workflows/app-test.yaml
+    secrets: inherit

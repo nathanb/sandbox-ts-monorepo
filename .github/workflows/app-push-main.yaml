@@ -1,0 +1,22 @@
+name: "@potatoes/app: PUSH to main"
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'apps/**'
+      - 'packages/lib-{main,shared}/**'
+
+jobs:
+  run_tests:
+    if: ${{ !contains(github.event.head_commit.message, '#skip') }}
+    uses: ./.github/workflows/app-test.yaml
+  version:
+    needs: run_tests
+    if: ${{ !contains(github.event.head_commit.message, '#skip') }}
+    uses: ./.github/workflows/app-version.yaml
+  # publish:
+  #   needs: version
+  #   if: ${{ !contains(github.event.head_commit.message, '#skip') }}
+  #   uses: ./.github/workflows/app-publish.yaml
+  #   secrets: inherit

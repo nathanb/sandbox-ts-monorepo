@@ -23,6 +23,6 @@ USER node:node
 ENV NODE_ENV=development
 RUN npm ci
 ENV GITHUB_SHA=$GITHUB_SHA
-RUN npm run build -w web
+RUN npm run build -w apps/web
 EXPOSE 3000
 CMD ["npm", "run", "dev"]
