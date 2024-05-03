@@ -94,8 +94,8 @@ function buildConfig(argv) {
 			extensions: ['.ts', '.tsx', '.jsx', '.js', '.json', '.cjs', '.mjs', '.mts', '.cts'],
 			extensionAlias: {
 				'.js': ['.js', '.ts', '.tsx'],
-				'.cjs': ['.cjs', '.cts', '.ctsx'],
-				'.mjs': ['.mjs', '.mts', '.mtsx']
+				'.cjs': ['.cjs', '.cts'],
+				'.mjs': ['.mjs', '.mts']
 			}
 		},
 		plugins: [
