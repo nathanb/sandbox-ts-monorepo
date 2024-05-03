@@ -20,6 +20,6 @@ jobs:
         #   NODE_AUTH_TOKEN: ${{ secrets.IF_YOU_NEED_THIS_FOR_PRIVATE_PKGS }}
       # skipping build because vitest doesn't need it. You should properly mock out deps though. Test only code in each layer
       - name: Build
-        run: npm run build:ts -w apps/web
+        run: npm run build -w apps/web
       - name: Run web related tests
         run: npm run test -w apps/web -w packages/lib-shared -w packages/lib-ui
