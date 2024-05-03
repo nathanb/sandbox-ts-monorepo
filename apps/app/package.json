@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "node .",
-    "prebuild": "tsc --build tsconfig.build.json --clean && rimraf dist",
+    "clean": "tsc --build tsconfig.build.json --clean && rimraf dist",
     "build": "tsc --build tsconfig.build.json",
     "test": "vitest --run --passWithNoTests",
     "lint": "npx eslint src"

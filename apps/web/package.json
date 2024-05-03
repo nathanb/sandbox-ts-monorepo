@@ -49,7 +49,7 @@
   },
   "scripts": {
     "start": "GITHUB_SHA=`git rev-parse HEAD` webpack serve",
-    "prebuild": "npx tsc --build --clean tsconfig.build.json && rimraf dist",
+    "clean": "npx tsc --build --clean tsconfig.build.json && rimraf dist",
     "build": "webpack --config webpack.config.cjs --mode production",
     "postbuild": "cp -R public/* dist/",
     "test": "vitest --run --passWithNoTests",

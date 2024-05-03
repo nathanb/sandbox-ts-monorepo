@@ -15,7 +15,9 @@
   "scripts": {
     "start": "npm start -w apps/app",
     "build": "npm-run-all -s build:ts build:web",
-    "prebuild:ts": "tsc --build --clean",
+    "clean:ts": "tsc --build --clean",
+    "clean:all": "npm run clean --if-present -ws",
+    "clean": "npm-run-all -s clean:ts clean:all",
     "build:ts": "tsc --build",
     "build:web": "npm run build -w apps/web",
     "test": "npm run test --if-present -ws",

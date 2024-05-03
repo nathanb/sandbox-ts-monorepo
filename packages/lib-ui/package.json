@@ -33,7 +33,7 @@
   },
   "scripts": {
     "test": "vitest --run --passWithNoTests",
-    "prebuild": "rimraf dist",
+    "clean": "rimraf dist",
     "lint": "npx eslint src"
   },
   "repository": {
