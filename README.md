@@ -71,15 +71,29 @@ We're combining both Typescript's build system with npm workspaces to simplify m
 
 ## NPM Workspaces
 
-With this monorepo using npm workspaces, each workspace will automatically link under `node_modules/{package_name}` making it available to any module in the repository. So by example, the package/workspace `packages/lib-main` named `@potatoes/lib-main` in its `package.json` will be available to any other project that requires it. Organizationally, the entry-point app `./app` and `./web` live in the root of the repository, and the dependencies are organized under `./packages`. This is purely by preference.
+With this monorepo using npm workspaces, each workspace will automatically link under `node_modules/{package_name}` making it available to any module in the repository by package name. So for example, the workspace `packages/lib-main` named `@potatoes/lib-main` will be available to any other project in the repository.
+
+Organizationally, the entry-point app `./apps/app` and `./apps/web` live under `./apps` the repository, and the dependencies are organized under `./packages`. This is purely by preference. Workspaces can exist in any subfolder.
 
 ## Web projects
 
-I've intentionally avoided CRA in this scenario for flexibility. Also, to keep things simple, I've elected not to use ESM for the web and UI packages. So `web` and `packages/lib-ui` both are `CommonJS` packages with `module: ESNext`. `tsc` will build the `lib-ui` project itself, but `web` has `emit: false` since it relies on `babel-typescript` and webpack. `lib-shared` has been switched to CommonJS as well for simplicity. The major benefit here (as a monorepo and tsc watch) is the ability to have a separate React component package that automatically refreshes upon save in the web app. This is typically a challenge due to conflicting react and react-dom instances. But here, npm workspaces solves that for us with auto-linking and package sharing.
+I've intentionally avoided CRA/`react-scripts` in this scenario for flexibility. This is my preference. But note that I'm using `ts-loader` rather than `babel-typescript` to render the output. This allows me to use `projectReferences` which is part of Typescript's own monorepo solution. The idea is: you can use `references` in tsconfig.json to build dependencies as needed within a monorepo. More on that later.
+
+## Module resolution
+
+Also, to keep things consistent, I've elected to use ESM (`type: 'module'`) for all projects across the repository. This allows me to "share" code directly (between Node and Browser projects) without the build tooling complaining about ESM vs non-ESM code. For Node, it also enables top level await. i.e. We have a shared repo with browser-friendly code and shared TS Types. It's techincally ESM, but ts-loader doesn't care when rendering a browser bundle.
+
+### ESM Caveats
+
+All internal package imports must include extensions.
+
+For Node projects, all files must use the `.mjs|.cjs` extension to indicate CommonJS or ESM. With Typescript layered into this, that makes file extensions on disk: `mts|.cts` respecively, and when you import, use the extension generated in the output: i.e. (relative import: `import from './module.mjs'` (imports `./module.mts`), or Package imports: `import from '@scope/package/Module'`). We exclude extensions for package imports because `package.json` exports handles the mapping extension for us. 
+
+For browser projects, I'm simply using `.ts/.tsx`. But it also means that within a package, all imports must resolve using file extensions like: `import from './relative.js'` (imports `./relative.ts`). And Package imports: `import from '@potatoes/lib-ui/Thing'
 
 ## Code splitting & Tree shaking
 
-Did I mention code-splitting? All of these projects are built with ESNext and are capable of code splitting via sub-path imports. Take a peek at the `lib-shared` [exports config](https://github.com/nathanb/sandbox-ts-monorepo/blob/main/packages/lib-shared/package.json#L9)
+Did I mention code-splitting? All of these projects are built with ESM and are capable of code splitting via sub-path imports. I've intentionally excluded all barrel files (index/entry points that only re-export other modules). This forces you to import direct modules only. Take a peek at the `lib-shared` [exports config](https://github.com/nathanb/sandbox-ts-monorepo/blob/main/packages/lib-shared/package.json#L7)
 
 i.e. Rather than:
 (Importing module from the root package index)
@@ -93,22 +107,17 @@ or (for React code-splitting)
 
 `lazy(() => import('@potatoes/lib-ui/Thing'))`
 
-## Node ESM
-
-~~All~~ Some of these projects (`app` and `lib-main`) are currently Node ESM configured with `package.json` `type: 'module'` and `exports: {...}`. The exports define root and subpaths to resolve modules within each project. This is where the extension mapping happens and the resolution of `/*` (import path) => `/dist/*` (actual file system path).
-
-While webpack -> babel-typescript builds commonJS code referencing ESM dependencies just fine, it throws kinks in the whole Typescript/references build. So for now, UI projects are common-js, server projects are ESM.
-
 ## TSC setup
 
-Given the above, the goal here with `tsconfig` is to simplify the build of the main project and its dependency graph. Side benefits include VSCode also keeping track of type changes upstream among the dependencies. The main idea (in this single entry-point scenario) is to setup a root tsconfig that provides root level entry point to manage the build. Its `references` will guide `tsc` on how to build and keep things current.
+Tyepscript has its own type of monorepo dependency management through the use of `references`. This allows you to define a dependency tree for each project. And with 
+`composite` and `incremental` set to `true`, it improves build performance by only building what changes in the tree. I like to think of it as top/down (entrypoint app referencing down to dependencies), and I treat each workspace as a "project".
 
 ### Root tsconfig
 
-There's a root tsconfig with `files: []` and `references: [{path: './path-to-entry-project'}]`. All projects will be configured with: `composite` and `incremental` build enabled to allow watch to more efficiently build changes. Currently the root tsconfig references the two entry point apps: `app` and `web`.
+With all the projects having their own tsconfig, to build the entire monorepo tree, you can setup a single tsconfig.json at the root of the monorepo with references to each entry point project you want to build via the `tsc` command. This root tsconfig will also ignore all files with `files: []`.
 
 ### Project tsconfig
 
-Each tsconfig is standalone and responsible for its own package. So its output paths are relative: `./dist`. Notice when doing full build generated files all land in the correct places for each of the three projects. I've also enabled `declarationMaps` and `declaration` in the `lib-*` projects to allow source mapping back from package import paths.
+There are a couple things to know first before actually setting these configs up. First: VSCode can ONLY look at `tsconfig.json`. This means for each project, `tsconfig` needs to include all files: test, code, everything. But for the build, you only want to track code files, so I like to create a second `tsconfig.build.json` that excludes tests and mocks. The main caveat with this is: yes, you can extend `tsconfig.json`, but `references` are unique to each `tsconfig` file. So `tsconfig.build.json` needs its own `references` to its dependencies' `tsconfig.build.json` files. You can see this in the project here. 
 
-With a recent update, I've added two sets of tsconfigs. The main one: `tsconfig.json` will be consumed by VSCode itself and applies to ALL files in the solution including test files. `tsconfig.build.json` (and the root `tsconfig.json`) are responsible for actually building the actual runtime code (non-web projects). Each of these sets uses `references` to their corresponding configs.
+Remember since we're using npm workspaces, when importing across projects, use the package name (rather than a relative file system path) since it will automatically be linked in node_modules after the first `npm install`. 
