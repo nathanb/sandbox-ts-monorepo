@@ -1,1 +1,1 @@
-export const TestComponent = () => <span>TestComponent</span>
+export const TestComponent = () => <span data-testid="TestComponent" />
