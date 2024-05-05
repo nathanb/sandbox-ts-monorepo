@@ -109,7 +109,7 @@ or (for React code-splitting)
 
 ## TSC setup
 
-Tyepscript has its own type of monorepo dependency management through the use of `references`. This allows you to define a dependency tree for each project. And with 
+Typescript has its own type of monorepo dependency management through the use of `references`. This allows you to define a dependency tree for each project. And with 
 `composite` and `incremental` set to `true`, it improves build performance by only building what changes in the tree. I like to think of it as top/down (entrypoint app referencing down to dependencies), and I treat each workspace as a "project".
 
 ### Root tsconfig
