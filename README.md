@@ -81,7 +81,7 @@ I've intentionally avoided CRA/`react-scripts` in this scenario for flexibility.
 
 ## Module resolution
 
-Also, to keep things consistent, I've elected to use ESM (`type: 'module'`) for all projects across the repository. This allows me to "share" code directly (between Node and Browser projects) without the build tooling complaining about ESM vs non-ESM code. i.e. We have a shared repo with browser-friendly code and shared TS Types. It's technically ESM, but ts-loader doesn't care when rendering a browser bundle.
+Also, to keep things consistent, I've elected to use ESM (`type: 'module'`) for all projects across the repository. This allows me to "share" code directly (between Node and Browser projects) without the build tooling complaining about ESM vs non-ESM code. i.e. We have a shared project/workspace with browser-friendly code and shared TS Types. It's technically ESM, but ts-loader doesn't care when rendering a browser bundle.
 
 ### ESM Caveats
 
