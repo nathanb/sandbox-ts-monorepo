@@ -87,9 +87,9 @@ Also, to keep things consistent, I've elected to use ESM (`type: 'module'`) for 
 
 All relative path module imports must include extensions.
 
-For Node projects, all files must use the `.mjs|.cjs` extension to indicate CommonJS or ESM. With Typescript layered into this, that makes file extensions on disk: `mts|.cts` respecively, and when you import, use the extension generated in the output: i.e. (relative import: `import from './module.mjs'` (imports `./module.mts`), or Package imports: `import from '@scope/package/Module'`). We exclude extensions for package imports because `package.json` exports handles the mapping extension for us. 
+For Node projects, all files must use the `.mjs|.cjs` extension to indicate CommonJS or ESM. With Typescript layered into this, that makes file extensions on disk: `mts|.cts` respecively, and when you import, use the extension generated in the output: i.e. (relative import: `import from './module.mjs'` (imports `./module.mts`), or Package imports: `import from '@scope/package/Module'`). We exclude extensions for package imports because `package.json` `exports: {...}` handles the mapping extension for us. 
 
-For browser projects, I'm simply using `.ts/.tsx`. But it also means that within a package, all imports must resolve using file extensions like: `import from './relative.js'` (imports `./relative.ts`). And Package imports: `import from '@potatoes/lib-ui/Thing'
+For browser projects, I'm simply using `.ts/.tsx`. But it also means that within a package, all imports must resolve using file extensions like: `import from './relative.js'` (imports `./relative.ts`). And Package imports: `import from '@potatoes/lib-ui/Thing'`
 
 ## Code splitting & Tree shaking
 
