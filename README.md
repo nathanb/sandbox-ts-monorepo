@@ -73,7 +73,7 @@ We're combining both Typescript's build system with npm workspaces to simplify m
 
 With this monorepo using npm workspaces, each workspace will automatically link under `node_modules/{package_name}` making it available to any module in the repository by package name. So for example, the workspace `packages/lib-main` named `@potatoes/lib-main` will be available to any other project in the repository.
 
-Organizationally, the entry-point app `./apps/app` and `./apps/web` live under `./apps` the repository, and the dependencies are organized under `./packages`. This is purely by preference. Workspaces can exist in any subfolder.
+Organizationally, the entry-point app `./apps/app` and `./apps/web` live under `./apps` in the repository, and the dependencies are organized under `./packages`. This is purely by preference. Workspaces can exist in any subfolder.
 
 ## Web projects
 
@@ -81,11 +81,11 @@ I've intentionally avoided CRA/`react-scripts` in this scenario for flexibility.
 
 ## Module resolution
 
-Also, to keep things consistent, I've elected to use ESM (`type: 'module'`) for all projects across the repository. This allows me to "share" code directly (between Node and Browser projects) without the build tooling complaining about ESM vs non-ESM code. For Node, it also enables top level await. i.e. We have a shared repo with browser-friendly code and shared TS Types. It's techincally ESM, but ts-loader doesn't care when rendering a browser bundle.
+Also, to keep things consistent, I've elected to use ESM (`type: 'module'`) for all projects across the repository. This allows me to "share" code directly (between Node and Browser projects) without the build tooling complaining about ESM vs non-ESM code. i.e. We have a shared repo with browser-friendly code and shared TS Types. It's technically ESM, but ts-loader doesn't care when rendering a browser bundle.
 
 ### ESM Caveats
 
-All internal package imports must include extensions.
+All relative path module imports must include extensions.
 
 For Node projects, all files must use the `.mjs|.cjs` extension to indicate CommonJS or ESM. With Typescript layered into this, that makes file extensions on disk: `mts|.cts` respecively, and when you import, use the extension generated in the output: i.e. (relative import: `import from './module.mjs'` (imports `./module.mts`), or Package imports: `import from '@scope/package/Module'`). We exclude extensions for package imports because `package.json` exports handles the mapping extension for us. 
 
