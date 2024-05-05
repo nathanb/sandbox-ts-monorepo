@@ -119,5 +119,3 @@ With all the projects having their own tsconfig, to build the entire monorepo tr
 ### Project tsconfig
 
 There are a couple things to know first before actually setting these configs up. First: VSCode can ONLY look at `tsconfig.json`. This means for each project, `tsconfig` needs to include all files: test, code, everything. But for the build, you only want to track code files, so I like to create a second `tsconfig.build.json` that excludes tests and mocks. The main caveat with this is: yes, you can extend `tsconfig.json`, but `references` are unique to each `tsconfig` file. So `tsconfig.build.json` needs its own `references` to its dependencies' `tsconfig.build.json` files. You can see this in the project here. 
-
-Remember since we're using npm workspaces, when importing across projects, use the package name (rather than a relative file system path) since it will automatically be linked in node_modules after the first `npm install`. 
