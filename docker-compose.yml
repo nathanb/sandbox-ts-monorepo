@@ -1,4 +1,3 @@
-version: "3.4"
 services:
   web:
     build:
@@ -6,6 +5,8 @@ services:
     ports:
       - "3000:3000"
     volumes:
+      # binding package.json for each workspace and the root.
+      # binding src/ for each workspace used here (web related)
       - ./package.json:/home/node/app/package.json
       - ./apps/web/src:/home/node/app/apps/web/src
       - ./apps/web/package.json:/home/node/app/apps/web/package.json

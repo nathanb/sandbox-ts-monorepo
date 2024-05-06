@@ -24,7 +24,7 @@ npm run build
 ## Clean
 
 ```bash
-npm run prebuild
+npm run clean
 ```
 
 ## Test all
