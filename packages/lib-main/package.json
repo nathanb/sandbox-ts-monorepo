@@ -3,14 +3,20 @@
   "version": "1.0.13",
   "description": "",
   "type": "module",
+  "module": "./dist/index.mjs",
   "exports": {
-    "./*": "./dist/*.mjs"
+    ".": {
+      "import": "./dist/index.mjs"
+    },
+    "./*": {
+      "import": "./dist/*.mjs"
+    }
   },
   "files": [
     "dist"
   ],
   "devDependencies": {
-    "@types/node": "^20.12.8",
+    "@types/node": "^20.12.10",
     "@typescript-eslint/eslint-plugin": "^7.8.0",
     "@typescript-eslint/parser": "^7.8.0",
     "eslint-import-resolver-typescript": "^3.6.1",
@@ -21,7 +27,7 @@
   },
   "scripts": {
     "test": "vitest --run --passWithNoTests",
-    "clean": "rimraf dist",
+    "clean": "tsc --build --clean tsconfig.build.json && rimraf dist",
     "lint": "npx eslint src"
   },
   "author": "",

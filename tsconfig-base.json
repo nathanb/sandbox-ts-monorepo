@@ -5,11 +5,11 @@
 		"declaration": true,
 		"declarationMap": true,
 		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true, /* Ensure that casing is correct in imports. */
+		"forceConsistentCasingInFileNames": true,
 		"incremental": true,
 		"lib": [ "esnext" ],
 		"module": "NodeNext",
-		"moduleResolution": "NodeNext",
+		"moduleResolution": "nodenext",
 		"noImplicitAny": true,
 		"resolveJsonModule": true,
 		"skipDefaultLibCheck": true,

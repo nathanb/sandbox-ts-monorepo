@@ -1,4 +1,4 @@
-import { add } from './index.mjs'
+import { add } from './add.mjs'
 
 describe('index', () => {
 	test('add', () => {

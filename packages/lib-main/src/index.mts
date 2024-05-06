@@ -1,6 +1,6 @@
 import { multiply as sharedMultiply } from '@potatoes/lib-shared'
 
-export const add = (a: number, b: number) => a + b
+export * from './add.mjs'
 
 /**
  * Use the shared multiply; barreling here.
