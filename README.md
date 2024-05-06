@@ -33,6 +33,38 @@ npm run clean
 npm test
 ```
 
+## Updating modules
+This can be done per workspace or in groups. Often, I update my dev tool chain shared by all projects at once. Here's a few scenarios:
+
+### General updates
+
+```bash
+# all workspaces implicitly
+npm update --save #--save to persist package.json after update. This is traditional npm stuff.
+
+# OR update/install ALL workspaces
+npm install package@<new_version> -ws
+```
+
+This will bring up to date any module with a minor/patch change (or updates based on your depedency configuration. i.e. `^...` latest minor/patch, or `~...`: latest patch or `*` latest version.
+
+### Workspace updates
+
+```bash
+npm update --save -w <workspace> [-w additional_workspace(s)]
+
+# OR (install specific new version)
+
+npm install package@<version> -w <workspace> [-w additional_workspace(s)]
+```
+
+Use `-w` argument to target workspaces. I often use this when updating web only projects w/ specific dependencies only used by those workspaces. (Like: `testing-library/react@15` for example).
+
+### `npm outdated`
+`npm outdated` now works with all workspaces. The output lets you know which workspace requires the update. This can be useful when deciding how to install/update dependencies at a macro level. 
+
+
+
 ## Run (the CLI)
 
 NOTE for Docker: I didn't setup a docker-compose service for this, but you can run it in docker just the same by running `docker compose run web /bin/sh` and then interactively running the commands below.
