@@ -63,6 +63,24 @@ Use `-w` argument to target workspaces. I often use this when updating web only 
 ### `npm outdated`
 `npm outdated` now works with all workspaces. The output lets you know which workspace requires the update. This can be useful when deciding how to install/update dependencies at a macro level. 
 
+#### Example:
+
+```bash
+Package                 Current   Wanted  Latest  Location                             Depended by
+@stripe/stripe-js         2.4.0    2.4.0   3.3.0  node_modules/@stripe/stripe-js       blazer-ui@npm:@iwsllc/blazer-ui@0.2.46
+@testing-library/react   14.3.1   14.3.1  15.0.6  node_modules/@testing-library/react  public@npm:@iwsllc/blazer-public@0.2.46
+@testing-library/react   14.3.1   14.3.1  15.0.6  node_modules/@testing-library/react  manager@npm:@iwsllc/blazer-manager@0.2.46
+@testing-library/react   14.3.1   14.3.1  15.0.6  node_modules/@testing-library/react  blazer-ui@npm:@iwsllc/blazer-ui@0.2.46
+```
+
+Here is an example project: blazer-ui (a package library) and public, manager (entry point apps that share blazer-ui). The **Depended by** column tells you which workpace needs the update. To update these, I could simply: 
+
+```bash
+npm i -D @testing-library/react@15 -w apps/public -w apps/manager -w packages/blazer-ui
+npm i -D stripe-js@3 -w package/blazer-ui
+```
+
+The changes would be made and persisted to each package.json. 
 
 
 ## Run (the CLI)
